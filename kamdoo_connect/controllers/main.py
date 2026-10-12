@@ -59,11 +59,14 @@ class KamdooController(http.Controller):
         trouve = request.env["kamdoo.jeton"]._kamdoo_trouver(jeton)
         if not trouve:
             raise AccessDenied()
-        credential = {"type": "kamdoo", "login": trouve.user_id.sudo().login, "jeton": jeton}
-        # Odoo 19 : authenticate(env, …) ; jusqu'en 18 : authenticate(db, …).
-        cible = request.env if release.version_info[0] >= 19 else request.db
-        request.session.authenticate(cible, credential)
-        return {"uid": request.session.uid}
+        from ..models.res_users import PREFIXE
+        session = request.session
+        session.authenticate(request.db, trouve.user_id.sudo().login, PREFIXE + jeton)
+        # Le jeton vient d'une session déjà authentifiée (second facteur compris) : pas de
+        # second facteur ici (Odoo 17 n'a pas le « mfa: skip » des versions suivantes).
+        if not session.uid and session.pre_uid:
+            session.finalize(request.env(user=session.pre_uid))
+        return {"uid": session.uid}
 
     @http.route("/kamdoo/qr", type="http", auth="user", methods=["GET"], sitemap=False)
     def kamdoo_qr(self, **kwargs):

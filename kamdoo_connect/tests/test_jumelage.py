@@ -27,12 +27,13 @@ class TestJumelage(TransactionCase):
         cls.Jeton = cls.env["kamdoo.jeton"]
 
     def _verifier(self, user, jeton):
-        return self.env["res.users"].with_user(user)._check_credentials({"type": "kamdoo", "jeton": jeton}, {})
+        from ..models.res_users import PREFIXE
+        self.env["res.users"].with_user(user)._check_credentials(PREFIXE + jeton, {})
+        return True
 
     def test_jeton_usage_unique(self):
         jeton = self.Jeton._kamdoo_creer(self.user)
-        info = self._verifier(self.user, jeton)
-        self.assertEqual(info, {"uid": self.user.id, "auth_method": "kamdoo", "mfa": "skip"})
+        self.assertTrue(self._verifier(self.user, jeton))
         with self.assertRaises(AccessDenied):
             self._verifier(self.user, jeton)
 
@@ -59,6 +60,4 @@ class TestJumelage(TransactionCase):
         self.assertEqual(len(self.Jeton.search([("user_id", "=", self.user.id)])), 1)
 
     def test_mot_de_passe_inchange(self):
-        info = self.env["res.users"].with_user(self.user)._check_credentials(
-            {"type": "password", "password": "kamdoo_testeur_mdp"}, {})
-        self.assertEqual(info["auth_method"], "password")
+        self.env["res.users"].with_user(self.user)._check_credentials("kamdoo_testeur_mdp", {})
