@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="page_qr" name="Clefy: connect my phone">
+        <t t-call="web.layout">
+            <t t-set="title">Clefy</t>
+            <t t-set="head">
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <style>
+                    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #F5F6FA; color: #11131F; margin: 0; }
+                    .clefy-page { max-width: 460px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 24px; text-align: center; box-shadow: 0 10px 40px rgba(20, 24, 61, .08); }
+                    .clefy-page h1 { font-size: 22px; margin: 16px 0 4px; }
+                    .clefy-page p { color: #5E6375; line-height: 1.5; margin: 6px 0; }
+                    .clefy-page img.clefy-qr { width: 260px; height: 260px; margin: 20px auto; display: block; }
+                    .clefy-page img.clefy-logo { max-height: 56px; max-width: 180px; }
+                    .clefy-page ol { text-align: left; color: #11131F; line-height: 1.7; padding-left: 22px; margin: 16px 0 0; }
+                </style>
+            </t>
+            <div class="clefy-page">
+                <img class="clefy-logo" t-att-src="'/web/binary/company_logo?company=%s' % company.id" t-att-alt="company.name"/>
+                <h1>Connect my phone</h1>
+                <p><t t-esc="company.name"/> on your phone, with the Clefy app.</p>
+                <img class="clefy-qr" t-att-src="qr_src" alt="QR code"/>
+                <ol>
+                    <li>Install <b>Clefy</b> from the App Store or Google Play.</li>
+                    <li>Open it and tap <b>Scan my company's QR code</b>.</li>
+                    <li>Sign in as usual: your password never leaves this page.</li>
+                </ol>
+            </div>
+        </t>
+    </template>
+</odoo>

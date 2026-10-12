@@ -1,0 +1,20 @@
+// Clefy app mode: the page is shown under the app's native tab bar.
+// --clefy-bas is set by the app (height covered by its floating tab bar).
+html.o_clefy_app {
+    -webkit-tap-highlight-color: transparent;
+
+    .o_action_manager {
+        padding-bottom: var(--clefy-bas, 0px);
+    }
+
+    // Installing the web app makes no sense inside the native app.
+    .o_user_menu .dropdown-item[data-menu="install_pwa"] {
+        display: none !important;
+    }
+
+    // Bigger touch targets in lists and kanban cards.
+    .o_list_renderer .o_data_row > td {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+}

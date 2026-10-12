@@ -1,0 +1,9 @@
+// Clefy app mode on public pages (login, password reset): iOS zooms into any
+// field under 16px when it gets the focus, so fields keep 16px in the app.
+html.o_clefy_app {
+    .oe_login_form, .oe_signup_form, .oe_reset_password_form {
+        input, select {
+            font-size: 16px;
+        }
+    }
+}
