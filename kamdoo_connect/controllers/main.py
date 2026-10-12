@@ -59,8 +59,10 @@ class KamdooController(http.Controller):
         trouve = request.env["kamdoo.jeton"]._kamdoo_trouver(jeton)
         if not trouve:
             raise AccessDenied()
-        login = trouve.user_id.sudo().login
-        request.session.authenticate(request.db, {"type": "kamdoo", "login": login, "jeton": jeton})
+        credential = {"type": "kamdoo", "login": trouve.user_id.sudo().login, "jeton": jeton}
+        # Odoo 19 : authenticate(env, …) ; jusqu'en 18 : authenticate(db, …).
+        cible = request.env if release.version_info[0] >= 19 else request.db
+        request.session.authenticate(cible, credential)
         return {"uid": request.session.uid}
 
     @http.route("/kamdoo/qr", type="http", auth="user", methods=["GET"], sitemap=False)
