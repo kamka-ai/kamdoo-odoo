@@ -13,6 +13,7 @@
                     .kamdoo-page img.kamdoo-qr { width: 260px; height: 260px; margin: 20px auto; display: block; }
                     .kamdoo-page img.kamdoo-logo { max-height: 56px; max-width: 180px; }
                     .kamdoo-page ol { text-align: left; color: #11131F; line-height: 1.7; padding-left: 22px; margin: 16px 0 0; }
+                    .kamdoo-page .kamdoo-note { font-size: 13px; margin-top: 16px; }
                 </style>
             </t>
             <div class="kamdoo-page">
@@ -23,8 +24,11 @@
                 <ol>
                     <li>Install <b>Kamdoo</b> from the App Store or Google Play.</li>
                     <li>Open it and tap <b>Scan my company's QR code</b>.</li>
-                    <li>Sign in as usual: your password never leaves this page.</li>
+                    <li>That's it: you are signed in on your phone.</li>
                 </ol>
+                <p class="kamdoo-note">This code works once and for five minutes; showing it again cancels the previous one.
+                It holds no password. Your phone then appears in Preferences › Account Security › Devices, where you can sign it out.</p>
+                <p><a href="/kamdoo/qr">Show a new code</a></p>
             </div>
         </t>
     </template>

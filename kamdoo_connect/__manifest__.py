@@ -11,17 +11,19 @@ creation, search, and the Discuss messages.
 
 This free module adds:
 
-* "Connect my phone" in the user menu: a QR code that the app scans;
+* "Connect my phone" in the user menu: a QR code that the app scans. It holds a
+  one-time token valid five minutes, never a login or a password;
 * your company's name, logo and colour shown in the app;
 * screens adapted to touch when opened from the app.
 """,
-    "version": "18.0.1.0.1",
+    "version": "18.0.1.1.0",
     "author": "Kamka IT",
     "website": "https://kamka-it.com",
     "license": "LGPL-3",
     "category": "Productivity",
     "depends": ["web", "base_setup"],
     "data": [
+        "security/ir.model.access.csv",
         "views/templates.xml",
         "views/res_config_settings_views.xml",
     ],
