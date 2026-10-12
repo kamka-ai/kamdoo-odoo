@@ -35,6 +35,11 @@ class ResUsersApikeys(models.Model):
         return (PREFIXE + ((appareil or "").strip() or "Phone"))[:100]
 
     @api.model
+    def _kamdoo_revoquer(self, appareil):
+        """Revokes the current user's Kamdoo keys for the phone ``appareil``."""
+        self.sudo().search([("user_id", "=", self.env.uid), ("name", "=", self._kamdoo_nom(appareil))])._remove()
+
+    @api.model
     def _kamdoo_generer(self, appareil):
         """A key for the current user's phone ``appareil``; that phone's older Kamdoo
         keys are revoked. Returns ``(key, expiry)``.
@@ -43,7 +48,7 @@ class ResUsersApikeys(models.Model):
         (one day by default): it is the duration chosen for the app in Settings.
         """
         nom = self._kamdoo_nom(appareil)
-        self.sudo().search([("user_id", "=", self.env.uid), ("name", "=", nom)])._remove()
+        self._kamdoo_revoquer(appareil)
         expire = fields.Datetime.now() + timedelta(days=self._kamdoo_duree())
         cle = self.sudo()._generate("rpc", nom, expire)
         return cle, expire

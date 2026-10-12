@@ -58,6 +58,13 @@ class TestCles(TransactionCase):
         self.assertEqual(self._uid_de(iphone), self.user.id)
         self.assertEqual(self._uid_de(android), self.user.id)
 
+    def test_retirer_la_societe_revoque_la_cle_du_telephone(self):
+        iphone, _ = self.Cles._kamdoo_generer("iPhone de Test")
+        android, _ = self.Cles._kamdoo_generer("Pixel de Test")
+        self.Cles._kamdoo_revoquer("iPhone de Test")
+        self.assertFalse(self._uid_de(iphone))
+        self.assertEqual(self._uid_de(android), self.user.id)
+
     def test_cle_revoquee_ne_marche_plus(self):
         cle, _ = self.Cles._kamdoo_generer("iPhone de Test")
         self.env["res.users.apikeys"].sudo().search([("user_id", "=", self.user.id)])._remove()

@@ -10,7 +10,8 @@
 * ``/kamdoo/jumelage`` (JSON): the app exchanges that token, once, for a session
   and, from Odoo 19, an API key of its own for the JSON-2 API.
 * ``/kamdoo/cle`` (logged-in user): a key for a phone signed in through the login
-  page; ``/kamdoo/cle/renouveler`` (that key): a fresh one before it expires.
+  page; ``/kamdoo/cle/renouveler`` (that key): a fresh one before it expires;
+  ``/kamdoo/cle/revoquer`` (that key): the company is removed from the phone.
 """
 import json
 from urllib.parse import quote, urlencode
@@ -84,6 +85,12 @@ class KamdooController(http.Controller):
     def kamdoo_cle_renouveler(self, appareil=None, **kwargs):
         """A fresh key for the phone calling with its current one, which is revoked."""
         return self._kamdoo_cle(request.env, appareil)
+
+    @http.route("/kamdoo/cle/revoquer", type="jsonrpc", auth="bearer", methods=["POST"], sitemap=False)
+    def kamdoo_cle_revoquer(self, appareil=None, **kwargs):
+        """The company is removed from the phone: its key goes."""
+        request.env["res.users.apikeys"]._kamdoo_revoquer(appareil)
+        return True
 
     @http.route("/kamdoo/qr", type="http", auth="user", methods=["GET"], sitemap=False)
     def kamdoo_qr(self, **kwargs):
