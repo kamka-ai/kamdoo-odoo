@@ -18,11 +18,11 @@ class TestJumelage(TransactionCase):
         super().setUpClass()
         cls.user = cls.env["res.users"].create({
             "name": "Kamdoo Testeur", "login": "kamdoo_testeur", "password": "kamdoo_testeur_mdp",
-            "groups_id": [(6, 0, [cls.env.ref("base.group_user").id])],
+            "group_ids": [(6, 0, [cls.env.ref("base.group_user").id])],
         })
         cls.autre = cls.env["res.users"].create({
             "name": "Autre", "login": "kamdoo_autre", "password": "kamdoo_autre_mdp",
-            "groups_id": [(6, 0, [cls.env.ref("base.group_user").id])],
+            "group_ids": [(6, 0, [cls.env.ref("base.group_user").id])],
         })
         cls.Jeton = cls.env["kamdoo.jeton"]
 
