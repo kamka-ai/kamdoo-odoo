@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Clefy – Mobile app for your company",
-    "summary": "Connect the Clefy iOS and Android app to this database: QR code "
+    "name": "Kamdoo – Mobile app for your company",
+    "summary": "Connect the Kamdoo iOS and Android app to this database: QR code "
                "pairing, your company's name, logo and colours in the app, and "
                "screens adapted to touch.",
     "description": """
-Clefy opens your company's ERP on iPhone, iPad and Android: native tab bar,
+Kamdoo opens your company's ERP on iPhone, iPad and Android: native tab bar,
 your day's activities, all your apps (custom modules included), quick
 creation, search, and the Discuss messages.
 
@@ -27,11 +27,11 @@ This free module adds:
     ],
     "assets": {
         "web.assets_backend": [
-            "clefy_connect/static/src/clefy.scss",
-            "clefy_connect/static/src/clefy_menu.js",
+            "kamdoo_connect/static/src/kamdoo.scss",
+            "kamdoo_connect/static/src/kamdoo_menu.js",
         ],
         "web.assets_frontend": [
-            "clefy_connect/static/src/clefy_frontend.scss",
+            "kamdoo_connect/static/src/kamdoo_frontend.scss",
         ],
     },
     "installable": True,
