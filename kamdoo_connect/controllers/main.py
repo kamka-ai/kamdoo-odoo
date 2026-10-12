@@ -53,7 +53,7 @@ class KamdooController(http.Controller):
         params = {"url": base_url.rstrip("/"), "db": request.db, "jeton": jeton}
         return "%s?%s" % (QR_SCHEME, urlencode(params))
 
-    @http.route("/kamdoo/jumelage", type="json", auth="public", methods=["POST"], csrf=False, sitemap=False)
+    @http.route("/kamdoo/jumelage", type="jsonrpc", auth="public", methods=["POST"], csrf=False, sitemap=False)
     def kamdoo_jumelage(self, jeton=None, **kwargs):
         """Exchanges a QR token for a session of the user who displayed it."""
         trouve = request.env["kamdoo.jeton"]._kamdoo_trouver(jeton)
