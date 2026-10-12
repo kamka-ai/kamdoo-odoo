@@ -15,6 +15,12 @@
                             </a>
                         </div>
                     </setting>
+                    <setting id="kamdoo_cle_setting" string="Phone keys"
+                             help="Paired phones and their assistants (Siri, Gemini) use a key of their own with the JSON-2 API. Users revoke it in Preferences › Account Security.">
+                        <div class="mt8">
+                            <field name="kamdoo_duree_cle" class="oe_inline"/> days
+                        </div>
+                    </setting>
                 </block>
             </xpath>
         </field>

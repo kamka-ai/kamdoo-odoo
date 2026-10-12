@@ -7,12 +7,15 @@
 * ``/kamdoo/qr`` (logged-in user): the page with the QR code that the app scans
   to add this company. The code carries the server address, the database and a
   one-time token valid five minutes — never a login or a password.
-* ``/kamdoo/jumelage`` (JSON): the app exchanges that token, once, for a session.
+* ``/kamdoo/jumelage`` (JSON): the app exchanges that token, once, for a session
+  and, from Odoo 19, an API key of its own for the JSON-2 API.
+* ``/kamdoo/cle`` (logged-in user): a key for a phone signed in through the login
+  page; ``/kamdoo/cle/renouveler`` (that key): a fresh one before it expires.
 """
 import json
 from urllib.parse import quote, urlencode
 
-from odoo import http, release
+from odoo import fields, http, release
 from odoo.exceptions import AccessDenied
 from odoo.http import request
 
@@ -36,6 +39,8 @@ class KamdooController(http.Controller):
             "version_odoo": list(release.version_info[:2]),
             "version_odoo_texte": release.version,
             "db": request.db,
+            # The phone gets its own API key at pairing (JSON-2 API, Odoo 19+).
+            "cles": True,
             "societe": {
                 "nom": company.name,
                 "couleur": company.primary_color or "",
@@ -63,7 +68,22 @@ class KamdooController(http.Controller):
         # Odoo 19 : authenticate(env, …) ; jusqu'en 18 : authenticate(db, …).
         cible = request.env if release.version_info[0] >= 19 else request.db
         request.session.authenticate(cible, credential)
-        return {"uid": request.session.uid}
+        uid = request.session.uid
+        return {"uid": uid, **self._kamdoo_cle(request.env(user=uid), kwargs.get("appareil"))}
+
+    def _kamdoo_cle(self, env, appareil):
+        cle, expire = env["res.users.apikeys"]._kamdoo_generer(appareil)
+        return {"cle": cle, "expire": fields.Datetime.to_string(expire)}
+
+    @http.route("/kamdoo/cle", type="jsonrpc", auth="user", methods=["POST"], sitemap=False)
+    def kamdoo_cle(self, appareil=None, **kwargs):
+        """A key for the phone of the signed-in user (paired through the login page)."""
+        return self._kamdoo_cle(request.env, appareil)
+
+    @http.route("/kamdoo/cle/renouveler", type="jsonrpc", auth="bearer", methods=["POST"], sitemap=False)
+    def kamdoo_cle_renouveler(self, appareil=None, **kwargs):
+        """A fresh key for the phone calling with its current one, which is revoked."""
+        return self._kamdoo_cle(request.env, appareil)
 
     @http.route("/kamdoo/qr", type="http", auth="user", methods=["GET"], sitemap=False)
     def kamdoo_qr(self, **kwargs):

@@ -16,7 +16,7 @@ This free module adds:
 * your company's name, logo and colour shown in the app;
 * screens adapted to touch when opened from the app.
 """,
-    "version": "19.0.1.1.0",
+    "version": "19.0.1.2.0",
     "author": "Kamka IT",
     "website": "https://kamka-it.com",
     "license": "LGPL-3",
