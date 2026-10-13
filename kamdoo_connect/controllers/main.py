@@ -19,6 +19,7 @@ from urllib.parse import quote, urlencode
 from odoo import fields, http, release
 from odoo.exceptions import AccessDenied
 from odoo.http import request
+from odoo.http.session import authenticate
 
 QR_SCHEME = "kamdoo://ajouter"
 
@@ -54,7 +55,7 @@ class KamdooController(http.Controller):
         )
 
     def _kamdoo_pairing_link(self):
-        base_url = request.env["ir.config_parameter"].sudo().get_param("web.base.url") or request.httprequest.host_url
+        base_url = request.env["ir.config_parameter"].sudo().get_str("web.base.url") or request.httprequest.host_url
         jeton = request.env["kamdoo.jeton"]._kamdoo_creer(request.env.user)
         params = {"url": base_url.rstrip("/"), "db": request.db, "jeton": jeton}
         return "%s?%s" % (QR_SCHEME, urlencode(params))
@@ -66,9 +67,8 @@ class KamdooController(http.Controller):
         if not trouve:
             raise AccessDenied()
         credential = {"type": "kamdoo", "login": trouve.user_id.sudo().login, "jeton": jeton}
-        # Odoo 19 : authenticate(env, …) ; jusqu'en 18 : authenticate(db, …).
-        cible = request.env if release.version_info[0] >= 19 else request.db
-        request.session.authenticate(cible, credential)
+        # Odoo 20 : authenticate est une fonction du module odoo.http.session.
+        authenticate(request.session, request.env, credential)
         uid = request.session.uid
         return {"uid": uid, **self._kamdoo_cle(request.env(user=uid), kwargs.get("appareil"))}
 
@@ -81,12 +81,12 @@ class KamdooController(http.Controller):
         """A key for the phone of the signed-in user (paired through the login page)."""
         return self._kamdoo_cle(request.env, appareil)
 
-    @http.route("/kamdoo/cle/renouveler", type="jsonrpc", auth="bearer", methods=["POST"], sitemap=False)
+    @http.route("/kamdoo/cle/renouveler", type="jsonrpc", auth="bearer", bearer_scope="rpc", methods=["POST"], sitemap=False)
     def kamdoo_cle_renouveler(self, appareil=None, **kwargs):
         """A fresh key for the phone calling with its current one, which is revoked."""
         return self._kamdoo_cle(request.env, appareil)
 
-    @http.route("/kamdoo/cle/revoquer", type="jsonrpc", auth="bearer", methods=["POST"], sitemap=False)
+    @http.route("/kamdoo/cle/revoquer", type="jsonrpc", auth="bearer", bearer_scope="rpc", methods=["POST"], sitemap=False)
     def kamdoo_cle_revoquer(self, appareil=None, **kwargs):
         """The company is removed from the phone: its key goes."""
         request.env["res.users.apikeys"]._kamdoo_revoquer(appareil)

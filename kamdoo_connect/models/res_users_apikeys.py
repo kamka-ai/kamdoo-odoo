@@ -23,9 +23,9 @@ class ResUsersApikeys(models.Model):
     @api.model
     def _kamdoo_duree(self):
         """Key lifetime in days, from Settings (1 to 365)."""
-        brut = self.env["ir.config_parameter"].sudo().get_param(PARAM_DUREE, DUREE_DEFAUT)
+        # Odoo 20 : paramètres typés (get_int) ; une valeur illisible garde la durée par défaut.
         try:
-            jours = int(brut)
+            jours = self.env["ir.config_parameter"].sudo().get_int(PARAM_DUREE, DUREE_DEFAUT)
         except (TypeError, ValueError):
             jours = DUREE_DEFAUT
         return max(1, min(jours, 365))

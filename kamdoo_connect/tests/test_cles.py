@@ -34,16 +34,16 @@ class TestCles(TransactionCase):
         self.assertEqual(noms, ["Kamdoo · iPhone de Test"])
 
     def test_duree_des_reglages_au_dela_de_la_limite_des_groupes(self):
-        self.env["ir.config_parameter"].sudo().set_param(PARAM_DUREE, "45")
+        self.env["ir.config_parameter"].sudo().set_int(PARAM_DUREE, 45)
         _cle, expire = self.Cles._kamdoo_generer("iPhone de Test")
         ecart = expire - fields.Datetime.now()
         self.assertGreater(ecart, timedelta(days=44))
         self.assertLessEqual(ecart, timedelta(days=45))
 
     def test_duree_bornee(self):
-        self.env["ir.config_parameter"].sudo().set_param(PARAM_DUREE, "9999")
+        self.env["ir.config_parameter"].sudo().set_int(PARAM_DUREE, 9999)
         self.assertEqual(self.Cles._kamdoo_duree(), 365)
-        self.env["ir.config_parameter"].sudo().set_param(PARAM_DUREE, "abc")
+        self.env["ir.config_parameter"].sudo().set_str(PARAM_DUREE, "abc")
         self.assertEqual(self.Cles._kamdoo_duree(), 30)
 
     def test_une_cle_par_telephone(self):
