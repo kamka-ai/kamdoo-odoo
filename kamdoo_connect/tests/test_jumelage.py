@@ -3,11 +3,11 @@ from datetime import timedelta
 
 from odoo import fields
 from odoo.exceptions import AccessDenied
-from odoo.tests import TransactionCase, tagged
+from odoo.tests import SavepointCase, tagged
 
 
 @tagged("post_install", "-at_install")
-class TestJumelage(TransactionCase):
+class TestJumelage(SavepointCase):
     """The QR code holds a one-time token, never a login; the token opens a session once.
 
     The HTTP exchange (/kamdoo/qr, /kamdoo/jumelage) is checked end to end against a running server.

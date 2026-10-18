@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend" name="Kamdoo backend assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/kamdoo_connect/static/src/kamdoo.scss"/>
+            <script type="text/javascript" src="/kamdoo_connect/static/src/kamdoo_menu.js"/>
+        </xpath>
+    </template>
+    <template id="assets_frontend" inherit_id="web.assets_frontend" name="Kamdoo frontend assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/kamdoo_connect/static/src/kamdoo_frontend.scss"/>
+        </xpath>
+    </template>
+</odoo>

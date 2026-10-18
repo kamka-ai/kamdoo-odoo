@@ -15,3 +15,8 @@ html.o_kamdoo_app {
         padding-bottom: 0.6rem;
     }
 }
+
+// Inside the app, the phone is already connected.
+.o_kamdoo_app .o_kamdoo_connect_phone {
+    display: none !important;
+}
