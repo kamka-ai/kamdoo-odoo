@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_kamdoo_jeton_system,kamdoo.jeton system,model_kamdoo_jeton,base.group_system,1,0,0,1
+access_kamdoo_push_device_system,kamdoo.push.device system,model_kamdoo_push_device,base.group_system,1,0,0,1

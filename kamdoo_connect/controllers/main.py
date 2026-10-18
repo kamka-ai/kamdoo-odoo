@@ -26,7 +26,7 @@ class KamdooController(http.Controller):
             return request.env.user.company_id
         return request.env["res.company"].sudo().search([], limit=1, order="sequence, id")
 
-    @http.route("/kamdoo/info", type="http", auth="public", methods=["GET"], readonly=True, sitemap=False)
+    @http.route("/kamdoo/info", type="http", auth="public", methods=["GET"], sitemap=False)
     def kamdoo_info(self, **kwargs):
         company = self._kamdoo_company()
         module = request.env["ir.module.module"].sudo().search([("name", "=", "kamdoo_connect")], limit=1)
@@ -63,9 +63,9 @@ class KamdooController(http.Controller):
         session = request.session
         session.authenticate(request.db, trouve.user_id.sudo().login, PREFIXE + jeton)
         # Le jeton vient d'une session déjà authentifiée (second facteur compris) : pas de
-        # second facteur ici (Odoo 17 n'a pas le « mfa: skip » des versions suivantes).
+        # second facteur ici (Odoo 15 n'a pas le « mfa: skip » des versions suivantes).
         if not session.uid and session.pre_uid:
-            session.finalize(request.env(user=session.pre_uid))
+            session.finalize()
         return {"uid": session.uid}
 
     @http.route("/kamdoo/qr", type="http", auth="user", methods=["GET"], sitemap=False)
@@ -75,6 +75,6 @@ class KamdooController(http.Controller):
             "company": request.env.user.company_id,
             "link": link,
             "qr_src": "/report/barcode/?%s" % urlencode({
-                "barcode_type": "QR", "value": link, "width": 360, "height": 360, "quiet": 1,
+                "type": "QR", "value": link, "width": 360, "height": 360, "quiet": 1,
             }),
         })

@@ -2,7 +2,7 @@
 from odoo import fields, models
 from odoo.exceptions import AccessDenied
 
-# Odoo 17 : les identifiants sont un mot de passe (texte) ; le jeton du QR y voyage préfixé.
+# Odoo 15 : les identifiants sont un mot de passe (texte) ; le jeton du QR y voyage préfixé.
 PREFIXE = "kamdoo-jeton:"
 
 
