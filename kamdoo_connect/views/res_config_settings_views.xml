@@ -5,17 +5,25 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//block[@name='companies_setting_container']" position="after">
-                <block title="Kamdoo mobile app" name="kamdoo_setting_container">
-                    <setting id="kamdoo_setting" string="Kamdoo on iPhone, iPad and Android"
-                             help="Each user opens their user menu › Connect my phone, and scans the QR code with the Kamdoo app.">
-                        <div class="mt8">
-                            <a href="/kamdoo/qr" target="_blank" role="button" class="btn btn-link px-0">
-                                <i class="oi oi-arrow-right me-1"/>Show my QR code
-                            </a>
+            <xpath expr="//div[@id='companies']" position="after">
+                <div id="kamdoo">
+                    <h2>Kamdoo mobile app</h2>
+                    <div class="row mt16 o_settings_container" name="kamdoo_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box" id="kamdoo_setting">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Kamdoo on iPhone, iPad and Android</span>
+                                <div class="text-muted">
+                                    Each user opens their user menu › Connect my phone, and scans the QR code with the Kamdoo app.
+                                </div>
+                                <div class="mt8">
+                                    <a href="/kamdoo/qr" target="_blank" role="button" class="btn btn-link px-0">
+                                        <i class="fa fa-arrow-right me-1"/>Show my QR code
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </setting>
-                </block>
+                    </div>
+                </div>
             </xpath>
         </field>
     </record>

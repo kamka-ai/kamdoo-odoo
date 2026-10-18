@@ -14,14 +14,17 @@ This free module adds:
 * "Connect my phone" in the user menu: a QR code that the app scans. It holds a
   one-time token valid five minutes, never a login or a password;
 * your company's name, logo and colour shown in the app;
-* screens adapted to touch when opened from the app.
+* screens adapted to touch when opened from the app;
+* notifications on the phone (private messages, mentions, Inbox), end-to-end encrypted: Odoo 16 has no
+  Web Push, this module adds it the way Odoo 17 does it.
 """,
-    "version": "17.0.1.1.0",
+    "version": "16.0.1.2.0",
     "author": "Kamka IT",
     "website": "https://kamka-it.com",
     "license": "LGPL-3",
     "category": "Productivity",
-    "depends": ["web", "base_setup"],
+    "depends": ["web", "base_setup", "mail"],
+    "external_dependencies": {"python": ["cryptography", "requests"]},
     "data": [
         "security/ir.model.access.csv",
         "views/templates.xml",
