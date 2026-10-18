@@ -24,7 +24,7 @@ This free module adds:
     "license": "LGPL-3",
     "category": "Productivity",
     "depends": ["web", "base_setup", "mail"],
-    "external_dependencies": {"python": ["cryptography", "requests"]},
+    "external_dependencies": {"python": ["requests"]},
     "data": [
         "security/ir.model.access.csv",
         "views/templates.xml",
