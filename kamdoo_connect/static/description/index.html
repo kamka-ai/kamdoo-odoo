@@ -10,7 +10,7 @@
     <div class="alert alert-info mb-5" style="border-radius: 10px;">
       This module is the server side of <b>Kamdoo</b>, a free native mobile app for Odoo that is installed
       separately on each phone. The app also works without this module, with the usual Odoo login; the module
-      adds QR code pairing and your company's identity, and a dedicated API key per phone.
+      adds QR code pairing, your company's identity and a dedicated API key per phone.
     </div>
 
     <h2 style="color: #23296B; font-size: 26px; font-weight: 600;" class="mb-4">What it adds</h2>
@@ -21,7 +21,7 @@
             
             <p style="color: #5A5E8C;">A new entry in the user menu shows a QR code that the Kamdoo app scans.
             It holds a one-time token, valid for five minutes, never a login or a password.
-            Administrators also find it in Settings › Kamdoo mobile app.</p>
+            Administrators also find it in Settings &rsaquo; Kamdoo mobile app.</p>
           </div>
         </div>
         <div class="col-md-6 mb-4">
@@ -48,7 +48,7 @@
             <p style="color: #5A5E8C;">The app talks to the JSON-2 API with an API key of its own instead of a
             browser session. The key is named after the phone, expires after the duration set in Settings
             (30 days by default), is renewed by the app before then, and can be revoked like any API key in
-            Preferences › Account Security.</p>
+            Preferences &rsaquo; Account Security.</p>
           </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
       <li>Copy the <code>kamdoo_connect</code> folder into your addons path, update the Apps list and install
         <b>Kamdoo Mobile Connector</b>.</li>
       <li>Install the Kamdoo app on the phone.</li>
-      <li>In Odoo, open the user menu › <b>Connect my phone</b> and scan the QR code with the app.</li>
+      <li>In Odoo, open the user menu &rsaquo; <b>Connect my phone</b> and scan the QR code with the app.</li>
     </ol>
     <p style="color: #5A5E8C;"><b>Requirements:</b> Odoo 19.0, Community or Enterprise. Depends on
       <code>web</code>, <code>base_setup</code>.</p>
