@@ -13,7 +13,7 @@
                             <div class="o_setting_right_pane">
                                 <span class="o_form_label">Kamdoo on iPhone, iPad and Android</span>
                                 <div class="text-muted">
-                                    Each user opens their user menu › Connect my phone, and scans the QR code with the Kamdoo app.
+                                    Each user opens their user menu › Connect my phone, and scans the QR code with the Kamdoo app. Notifications are encrypted for each phone and forwarded by the Kamdoo relay to Apple or Google; the relay cannot read them.
                                 </div>
                                 <div class="mt8">
                                     <a href="/kamdoo/qr" target="_blank" role="button" class="btn btn-link px-0">

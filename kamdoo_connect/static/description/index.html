@@ -1,0 +1,99 @@
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="text-center mb-5">
+      <h2 style="color: #23296B; font-size: 34px; font-weight: 700;">Kamdoo Mobile Connector</h2>
+      <p class="lead" style="color: #5A5E8C; margin-top: 12px;">Pair the Kamdoo mobile app with this database by
+        QR code, and show your company's name, logo and colour in the app.</p>
+      <img src="banner.png" alt="Kamdoo Mobile Connector" class="img-fluid mt-4" style="border-radius: 12px; max-width: 720px;"/>
+    </div>
+
+    <div class="alert alert-info mb-5" style="border-radius: 10px;">
+      This module is the server side of <b>Kamdoo</b>, a free native mobile app for Odoo that is installed
+      separately on each phone. The app also works without this module, with the usual Odoo login; the module
+      adds QR code pairing and your company's identity, phone notifications.
+    </div>
+
+    <h2 style="color: #23296B; font-size: 26px; font-weight: 600;" class="mb-4">What it adds</h2>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="h-100 p-4" style="border: 1px solid #DDE1EA; border-radius: 12px;">
+            <h3 style="color: #23296B; font-size: 20px; font-weight: 600; margin-bottom: 12px;">Connect my phone</h3>
+            
+            <p style="color: #5A5E8C;">A new entry in the user menu shows a QR code that the Kamdoo app scans.
+            It holds a one-time token, valid for five minutes, never a login or a password.
+            Administrators also find it in Settings › Kamdoo mobile app.</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="h-100 p-4" style="border: 1px solid #DDE1EA; border-radius: 12px;">
+            <h3 style="color: #23296B; font-size: 20px; font-weight: 600; margin-bottom: 12px;">Your company in the app</h3>
+            
+            <p style="color: #5A5E8C;">The app shows your company's name, logo and colour, read before sign-in
+            from the public route <code>/kamdoo/info</code>. It returns the Odoo and module versions, the database
+            name and the company's name, colour and logo: what the public login page already shows, nothing more.</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="h-100 p-4" style="border: 1px solid #DDE1EA; border-radius: 12px;">
+            <h3 style="color: #23296B; font-size: 20px; font-weight: 600; margin-bottom: 12px;">Touch-friendly screens</h3>
+            
+            <p style="color: #5A5E8C;">When an Odoo page is opened from the app, it gets larger touch targets and a
+            layout suited to a phone screen. Nothing changes for people using Odoo in a browser.</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="h-100 p-4" style="border: 1px solid #DDE1EA; border-radius: 12px;">
+            <h3 style="color: #23296B; font-size: 20px; font-weight: 600; margin-bottom: 12px;">Notifications on the phone</h3>
+            
+            <p style="color: #5A5E8C;">Private messages, mentions and Inbox items reach the phone, end-to-end
+            encrypted. Odoo 16 has no Web Push: this module adds it the way Odoo 17 does
+            (RFC 8291 encryption, RFC 8292 VAPID signature). If the Python <code>cryptography</code> package is
+            missing, a pure-Python implementation of the same algorithms is used.</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 style="color: #23296B; font-size: 26px; font-weight: 600;" class="mb-3">Your data and external services</h2>
+    <ul style="color: #5A5E8C; line-height: 1.7;">
+      <li>The app talks directly to your Odoo server. Kamka IT, the publisher, receives none of your business data.</li>
+      <li><b>Notifications are the one exception.</b> This module encrypts each
+        notification for the phone it is meant for, then sends it to the <b>Kamdoo relay</b>, an external service
+        run by Kamka IT, which forwards it to Apple Push Notification service or Firebase Cloud Messaging.
+        The relay cannot read the content and keeps none of it.</li>
+      <li>Nothing is sent to the relay unless a user has paired a phone and allowed notifications on it.
+        Each user can turn notifications off in the phone's settings at any time.</li>
+      <li>The relay's source code is public: github.com/kamka-ai/kamdoo-relais.
+        Privacy policy: kamdoo.kamka-it.com/privacy.html.</li>
+      <li>No activation key, no account with Kamka IT, no subscription.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 style="color: #23296B; font-size: 26px; font-weight: 600;" class="mb-3">Installation and use</h2>
+    <ol style="color: #5A5E8C; line-height: 1.7;">
+      <li>Copy the <code>kamdoo_connect</code> folder into your addons path, update the Apps list and install
+        <b>Kamdoo Mobile Connector</b>.</li>
+      <li>Install the Kamdoo app on the phone.</li>
+      <li>In Odoo, open the user menu › <b>Connect my phone</b> and scan the QR code with the app.</li>
+    </ol>
+    <p style="color: #5A5E8C;"><b>Requirements:</b> Odoo 16.0, Community or Enterprise. Depends on
+      <code>web</code>, <code>base_setup</code>, <code>mail</code>.</p>
+    <ul style='color: #5A5E8C;'><li>The Python <code>requests</code> package (present in the official Odoo images).</li></ul>
+    <p style="color: #5A5E8C;">Odoo is a trademark of Odoo S.A. Kamdoo is published by Kamka IT and is not
+      affiliated with Odoo S.A.</p>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced text-center">
+    <h2 style="color: #23296B; font-size: 26px; font-weight: 600;" class="mb-3">Support</h2>
+    <p style="color: #5A5E8C;">Questions or bug reports:
+      <a href="mailto:contact@kamka-it.com" style="color: #207CA9;">contact@kamka-it.com</a></p>
+  </div>
+</section>
