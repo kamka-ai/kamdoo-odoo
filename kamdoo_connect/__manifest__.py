@@ -20,7 +20,7 @@ which forwards it to Apple or Google. The relay cannot read it and keeps nothing
 Nothing is sent unless a user paired a phone and allowed notifications on it.
 Business data never goes through Kamka IT: the app talks directly to Odoo.
 """,
-    "version": "18.0.1.1.1",
+    "version": "18.0.1.1.2",
     "author": "Kamka IT",
     "website": "https://kamka-it.com",
     "license": "LGPL-3",
