@@ -25,7 +25,7 @@ Kamdoo works without it: people sign in with their usual Odoo login. Installing 
 ## Install
 
 1. Take the branch matching your Odoo version and copy the `kamdoo_connect` folder into your addons path.
-2. Update the Apps list, then install **Kamdoo – Mobile app for your company**.
+2. Update the Apps list, then install **Kamdoo Mobile Connector**.
 3. In the app, users open the user menu › **Connect my phone** and scan the QR code.
 
 Odoo 14 to 16 need the Python `requests` package, present in the official images.
@@ -71,7 +71,7 @@ Kamdoo fonctionne sans lui : on se connecte avec ses identifiants Odoo habituels
 ### Installation
 
 1. Prenez la branche de votre version d'Odoo et copiez le dossier `kamdoo_connect` dans votre chemin d'addons.
-2. Mettez à jour la liste des Applications, puis installez **Kamdoo – Mobile app for your company**.
+2. Mettez à jour la liste des Applications, puis installez **Kamdoo Mobile Connector**.
 3. Dans l'app, chacun ouvre le menu de l'utilisateur › **Connecter mon téléphone** et scanne le QR code.
 
 Odoo 14 à 16 ont besoin du paquet Python `requests`, présent dans les images officielles.
