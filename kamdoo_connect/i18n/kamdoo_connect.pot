@@ -1,0 +1,201 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* kamdoo_connect
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20231106\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-21 18:17+0000\n"
+"PO-Revision-Date: 2026-10-21 18:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "<i class=\"fa fa-arrow-right me-1\"/>Show my QR code"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Kamdoo on your phone and tablet</span>"
+msgstr ""
+
+#. module: kamdoo_connect
+#. openerp-web
+#: code:addons/kamdoo_connect/static/src/xml/kamdoo_menu.xml:0
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+#, python-format
+msgid "Connect my phone"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__display_name
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__display_name
+#: model:ir.model.fields,field_description:kamdoo_connect.field_mail_thread__display_name
+#: model:ir.model.fields,field_description:kamdoo_connect.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid ""
+"Each user opens their user menu › Connect my phone, and scans the QR code "
+"with the Kamdoo app. Notifications are encrypted for each phone and "
+"forwarded by the Kamdoo relay to Apple or Google; the relay cannot read "
+"them."
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model,name:kamdoo_connect.model_mail_thread
+msgid "Email Thread"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__empreinte
+msgid "Empreinte"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__endpoint
+msgid "Endpoint"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__expiration_time
+msgid "Expiration Time"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__expire_le
+msgid "Expire Le"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__id
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__id
+#: model:ir.model.fields,field_description:kamdoo_connect.field_mail_thread__id
+#: model:ir.model.fields,field_description:kamdoo_connect.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid ""
+"Install <b>Kamdoo</b> from Google Play (Android); the App Store version for "
+"iPhone and iPad is coming soon."
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Kamdoo"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "Kamdoo mobile app"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model,name:kamdoo_connect.model_kamdoo_push_device
+msgid "Kamdoo notification device"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model,name:kamdoo_connect.model_kamdoo_jeton
+msgid "Kamdoo pairing token"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__keys
+msgid "Keys"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton____last_update
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device____last_update
+#: model:ir.model.fields,field_description:kamdoo_connect.field_mail_thread____last_update
+#: model:ir.model.fields,field_description:kamdoo_connect.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Open it and tap <b>Scan my company's QR code</b>."
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_push_device__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "QR code"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Show a new code"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "That's it: you are signed in on your phone."
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.constraint,message:kamdoo_connect.constraint_kamdoo_push_device_endpoint_unique
+msgid "The endpoint must be unique!"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid ""
+"This code works once and for five minutes; showing it again cancels the previous one.\n"
+"                It holds no password. Your phone then appears in Preferences › Account Security › Devices, where you can sign it out."
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__user_id
+msgid "User"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model,name:kamdoo_connect.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__utilise_le
+msgid "Utilise Le"
+msgstr ""
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "on your phone, with the Kamdoo app."
+msgstr ""
