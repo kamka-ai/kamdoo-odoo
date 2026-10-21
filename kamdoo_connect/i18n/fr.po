@@ -1,0 +1,120 @@
+# French translation of kamdoo_connect.
+# This file contains the translation of the following modules:
+# 	* kamdoo_connect
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20261015\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-21 18:01+0000\n"
+"PO-Revision-Date: 2026-10-21 18:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "<i class=\"oi oi-arrow-right me-1\"/>Show my QR code"
+msgstr "<i class=\"oi oi-arrow-right me-1\"/>Afficher mon QR code"
+
+#. module: kamdoo_connect
+#. odoo-javascript
+#: code:addons/kamdoo_connect/static/src/kamdoo_menu.js:0
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Connect my phone"
+msgstr "Connecter mon téléphone"
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "Each user opens their user menu › Connect my phone, and scans the QR code with the Kamdoo app. Notifications are encrypted for each phone and forwarded by the Kamdoo relay to Apple or Google; the relay cannot read them."
+msgstr "Chacun ouvre le menu de son profil › Connecter mon téléphone, puis scanne le QR code avec l'app Kamdoo. Les notifications sont chiffrées pour chaque téléphone et transmises par le relais Kamdoo à Apple ou Google ; le relais ne peut pas les lire."
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__empreinte
+msgid "Empreinte"
+msgstr "Empreinte"
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__expire_le
+msgid "Expire Le"
+msgstr "Expire le"
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__id
+msgid "ID"
+msgstr "ID"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Install <b>Kamdoo</b> from Google Play (Android); the App Store version for iPhone and iPad is coming soon."
+msgstr "Installez <b>Kamdoo</b> depuis Google Play (Android) ; la version App Store pour iPhone et iPad arrive bientôt."
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Kamdoo"
+msgstr "Kamdoo"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "Kamdoo mobile app"
+msgstr "Application mobile Kamdoo"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.res_config_settings_view_form
+msgid "Kamdoo on your phone and tablet"
+msgstr "Kamdoo sur votre téléphone et votre tablette"
+
+#. module: kamdoo_connect
+#: model:ir.model,name:kamdoo_connect.model_kamdoo_jeton
+msgid "Kamdoo pairing token"
+msgstr "Jeton de jumelage Kamdoo"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Open it and tap <b>Scan my company's QR code</b>."
+msgstr "Ouvrez-la et touchez <b>Scanner le QR code de ma société</b>."
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "QR code"
+msgstr "QR code"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "Show a new code"
+msgstr "Afficher un nouveau code"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "That's it: you are signed in on your phone."
+msgstr "C'est tout : vous êtes connecté sur votre téléphone."
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "This code works once and for five minutes; showing it again cancels the previous one.\n                It holds no password. Your phone then appears in Preferences › Account Security › Devices, where you can sign it out."
+msgstr "Ce code sert une seule fois, pendant cinq minutes ; en afficher un nouveau annule le précédent. Il ne contient aucun mot de passe. Votre téléphone apparaît ensuite dans Préférences › Sécurité du compte › Appareils, où vous pouvez le déconnecter."
+
+#. module: kamdoo_connect
+#: model:ir.model,name:kamdoo_connect.model_res_users
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__user_id
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: kamdoo_connect
+#: model:ir.model.fields,field_description:kamdoo_connect.field_kamdoo_jeton__utilise_le
+msgid "Utilise Le"
+msgstr "Utilisé le"
+
+#. module: kamdoo_connect
+#: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
+msgid "on your phone, with the Kamdoo app."
+msgstr "sur votre téléphone, avec l'app Kamdoo."
