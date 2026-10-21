@@ -11,7 +11,7 @@
                     <div class="row mt16 o_settings_container" name="kamdoo_setting_container">
                         <div class="col-12 col-lg-6 o_setting_box" id="kamdoo_setting">
                             <div class="o_setting_right_pane">
-                                <span class="o_form_label">Kamdoo on iPhone, iPad and Android</span>
+                                <span class="o_form_label">Kamdoo on your phone and tablet</span>
                                 <div class="text-muted">
                                     Each user opens their user menu › Connect my phone, and scans the QR code with the Kamdoo app. Notifications are encrypted for each phone and forwarded by the Kamdoo relay to Apple or Google; the relay cannot read them.
                                 </div>
