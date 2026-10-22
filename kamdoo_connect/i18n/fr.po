@@ -92,8 +92,8 @@ msgstr "ID"
 
 #. module: kamdoo_connect
 #: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
-msgid "Install <b>Kamdoo</b> from Google Play (Android); the App Store version for iPhone and iPad is coming soon."
-msgstr "Installez <b>Kamdoo</b> depuis Google Play (Android) ; la version App Store pour iPhone et iPad arrive bientôt."
+msgid "Install <b>Kamdoo</b> on your phone or tablet: Google Play (Android) or the App Store (iPhone, iPad)."
+msgstr "Installez <b>Kamdoo</b> sur votre téléphone ou votre tablette : Google Play (Android) ou App Store (iPhone, iPad)."
 
 #. module: kamdoo_connect
 #: model_terms:ir.ui.view,arch_db:kamdoo_connect.page_qr
