@@ -22,7 +22,7 @@
                 <p><t t-esc="company.name"/> on your phone, with the Kamdoo app.</p>
                 <img class="kamdoo-qr" t-att-src="qr_src" alt="QR code"/>
                 <ol>
-                    <li>Install <b>Kamdoo</b> from Google Play (Android); the App Store version for iPhone and iPad is coming soon.</li>
+                    <li>Install <b>Kamdoo</b> on your phone or tablet: Google Play (Android) or the App Store (iPhone, iPad).</li>
                     <li>Open it and tap <b>Scan my company's QR code</b>.</li>
                     <li>That's it: you are signed in on your phone.</li>
                 </ol>
