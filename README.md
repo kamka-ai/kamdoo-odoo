@@ -1,6 +1,6 @@
 # Kamdoo Connect
 
-Free, open-source Odoo module for **[Kamdoo](https://kamdoo.kamka-it.com)**, the native app that opens your company's Odoo on iPhone, iPad and Android.
+Free, open-source Odoo module for **[Kamdoo](https://kamdoo.app)**, the native app that opens your company's Odoo on iPhone, iPad and Android.
 
 Kamdoo works without it: people sign in with their usual Odoo login. Installing this module on your database adds pairing by QR code, your company's identity in the app and, on Odoo 14 to 16, notifications.
 
@@ -32,7 +32,7 @@ Odoo 14 to 16 need the Python `requests` package, present in the official images
 
 ## Privacy
 
-The app talks directly to your Odoo; Kamka IT receives none of your data. Notifications are the only exception: your Odoo encrypts each one for the phone it is meant for, then sends it through the Kamdoo relay to Apple or Google. The relay cannot read them and keeps none of them. Its code is public: **[kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais)**. Full details: [privacy policy](https://kamdoo.kamka-it.com/privacy.html).
+The app talks directly to your Odoo; Kamka IT receives none of your data. Notifications are the only exception: your Odoo encrypts each one for the phone it is meant for, then sends it through the Kamdoo relay to Apple or Google. The relay cannot read them and keeps none of them. Its code is public: **[kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais)**. Full details: [privacy policy](https://kamdoo.app/privacy.html).
 
 ## Tests
 
@@ -48,7 +48,7 @@ odoo -d <database> -i kamdoo_connect --test-enable --stop-after-init
 
 ## Français
 
-Module Odoo gratuit et libre pour **[Kamdoo](https://kamdoo.kamka-it.com)**, l'app native qui ouvre l'Odoo de votre société sur iPhone, iPad et Android.
+Module Odoo gratuit et libre pour **[Kamdoo](https://kamdoo.app)**, l'app native qui ouvre l'Odoo de votre société sur iPhone, iPad et Android.
 
 Kamdoo fonctionne sans lui : on se connecte avec ses identifiants Odoo habituels. Installé sur votre base, ce module ajoute le jumelage par QR code, l'identité de votre société dans l'app et, sur Odoo 14 à 16, les notifications.
 
@@ -78,7 +78,7 @@ Odoo 14 à 16 ont besoin du paquet Python `requests`, présent dans les images o
 
 ### Confidentialité
 
-L'app parle directement à votre Odoo : Kamka IT ne reçoit aucune de vos données. Seule exception, les notifications : votre Odoo chiffre chacune pour le téléphone à qui elle est destinée, puis l'envoie par le relais de Kamdoo à Apple ou Google. Le relais ne peut pas les lire et n'en garde rien. Son code est public : **[kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais)**. Tout le détail : [politique de confidentialité](https://kamdoo.kamka-it.com/confidentialite.html).
+L'app parle directement à votre Odoo : Kamka IT ne reçoit aucune de vos données. Seule exception, les notifications : votre Odoo chiffre chacune pour le téléphone à qui elle est destinée, puis l'envoie par le relais de Kamdoo à Apple ou Google. Le relais ne peut pas les lire et n'en garde rien. Son code est public : **[kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais)**. Tout le détail : [politique de confidentialité](https://kamdoo.app/confidentialite.html).
 
 ### Licence
 
