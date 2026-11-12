@@ -4,7 +4,7 @@
 With the JSON-2 API (``/json/2/<model>/<method>``) the app and the phone's
 assistants (Siri, Gemini) reach the ERP with a key of their own instead of the
 browser session. The key is handed to the phone when it pairs, is named after it
-("Kamdoo · iPhone de Karim"), expires after the duration set in Settings (30 days
+("Kamdoo · iPhone 15"), expires after the duration set in Settings (30 days
 by default) and is renewed by the app before then. Users see and revoke it like any
 other API key, in Preferences › Account Security.
 """
