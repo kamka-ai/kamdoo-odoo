@@ -1,85 +1,101 @@
-# Kamdoo Connect
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/banniere-kamdoo-odoo-sombre.svg">
+    <img alt="kamdoo · kamdoo-odoo: the free Odoo module for Kamdoo Mobile" src="docs/assets/readme/banniere-kamdoo-odoo-clair.svg" width="100%">
+  </picture>
+</p>
 
-Free, open-source Odoo module for **[Kamdoo](https://kamdoo.app)**, the native app that opens your company's Odoo on iPhone, iPad and Android.
+**Kamdoo Connect is the free, open-source module for Odoo 14 that pairs Kamdoo Mobile with your database by QR code, shows your company's name, logo and colour in the app, and sends end-to-end encrypted notifications to the phone.**
 
-Kamdoo works without it: people sign in with their usual Odoo login. Installing this module on your database adds pairing by QR code, your company's identity in the app and, on Odoo 14 to 16, notifications.
+Kamdoo Mobile works without it: people sign in with their usual Odoo login. This module adds what the app cannot do on its own.
 
-*[Version française plus bas.](#français)*
+## How it works
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#FFFFFF", "primaryTextColor": "#141838", "primaryBorderColor": "#207CA9", "lineColor": "#5A5E8C", "secondaryColor": "#F3F5F8", "tertiaryColor": "#F3F5F8", "clusterBkg": "#F3F5F8", "clusterBorder": "#E1E4EE", "titleColor": "#23296B", "edgeLabelBackground": "#F3F5F8"}}}%%
+flowchart LR
+  app["Kamdoo Mobile<br/>iPhone, iPad, Android"]:::cle
+  odoo["Your Odoo 14<br/>kamdoo_connect"]:::surface
+  app -- "scans the QR code<br/>/kamdoo/qr, /kamdoo/jumelage" --> odoo
+  app -- "reads the company<br/>/kamdoo/info" --> odoo
+  relais["Kamdoo relay<br/>cannot read them"]:::base
+  stores["Apple · Google"]:::base
+  odoo -- "encrypted for one phone" --> relais --> stores --> app
+  classDef cle fill:#23296B,stroke:#23296B,color:#FFFFFF
+  classDef surface fill:#FFFFFF,stroke:#207CA9,color:#141838
+  classDef base fill:#FFFFFF,stroke:#5A5E8C,color:#141838
+```
 
 ## What it adds
 
-- **"Connect my phone"** in the user menu: a QR code the app scans. It holds a one-time token valid for five minutes, never a login or a password.
-- **Your company in the app**: its name, logo and colour, read by the app before sign-in from `/kamdoo/info`. This public route returns the Odoo and module versions, the database name and the company's name, colour and logo: what the public login page already shows, nothing more.
-- **Touch-friendly screens** when an Odoo page is opened from the app.
-- **Odoo 14, 15 and 16: phone notifications** for private messages, mentions and the Inbox, end-to-end encrypted. These versions have no Web Push; the module adds it the way Odoo 17 does (RFC 8291 encryption, RFC 8292 VAPID signature). If the `cryptography` package is missing, as in the official Odoo 14 image, a pure-Python implementation of the same algorithms is used.
-- **Odoo 19 and 20: a key for each phone.** The app talks to the JSON-2 API with an API key of its own instead of a browser session. The key is named after the phone ("Kamdoo · Karim's iPhone"), expires after the duration set in Settings (30 days by default), is renewed by the app before then, and can be revoked like any API key in Preferences › Account Security.
+| Feature | What happens |
+| --- | --- |
+| **Connect my phone** | In the user menu, a QR code the app scans. It holds a one-time token valid for five minutes, never a login or a password. |
+| **Your company in the app** | Its name, logo and colour, read by the app before sign-in from the public route `/kamdoo/info`: what the public login page already shows, nothing more. |
+| **Settings** | A **Kamdoo on your phone and tablet** section in Settings, with a link to your QR code. |
+| **Notifications** | Private messages, mentions and the Inbox reach the phone, end-to-end encrypted. Odoo 14 has no Web Push: the module adds it the way Odoo 17 does (RFC 8291 encryption, RFC 8292 VAPID signature). If the `cryptography` package is missing, a pure-Python version of the same algorithms is used. |
 
-## One branch per Odoo version
+## Get started
 
-| Branch | Odoo | Notifications | Phone API key |
-|---|---|---|---|
-| `14.0`, `15.0`, `16.0` | 14 to 16 | added by this module | no |
-| `17.0`, `18.0` | 17 and 18 | native in Odoo | no |
-| `19.0`, `20.0` | 19 and 20 | native in Odoo | yes |
+```bash
+git clone --branch 14.0 --single-branch https://github.com/kamka-ai/kamdoo-odoo.git
+cp -r kamdoo-odoo/kamdoo_connect /path/to/your/addons/
+odoo -d <database> -i kamdoo_connect --stop-after-init
+```
 
-## Install
+The module **Kamdoo Mobile Connector** is installed: each user opens the user menu › **Connect my phone** and scans the QR code with Kamdoo Mobile. It needs the Python `requests` package, present in the official Odoo images.
 
-1. Take the branch matching your Odoo version and copy the `kamdoo_connect` folder into your addons path.
-2. Update the Apps list, then install **Kamdoo Mobile Connector**.
-3. In the app, users open the user menu › **Connect my phone** and scan the QR code.
+## Structure
 
-Odoo 14 to 16 need the Python `requests` package, present in the official images.
+| Path | What it holds |
+| --- | --- |
+| `kamdoo_connect/controllers/` | The routes the app calls: `/kamdoo/info`, `/kamdoo/qr`, `/kamdoo/jumelage` |
+| `kamdoo_connect/models/` | The one-time pairing token, the phone registry and the notification hook |
+| `kamdoo_connect/tools/` | Web Push encryption and signature, with a pure-Python fallback |
+| `kamdoo_connect/views/`, `static/` | The QR page, the Settings section, the user-menu entry and touch-friendly styles |
+| `kamdoo_connect/i18n/` | Translations |
+| `kamdoo_connect/tests/` | The module's tests |
 
-## Privacy
+## Supported versions
 
-The app talks directly to your Odoo; Kamka IT receives none of your data. Notifications are the only exception: your Odoo encrypts each one for the phone it is meant for, then sends it through the Kamdoo relay to Apple or Google. The relay cannot read them and keeps none of them. Its code is public: **[kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais)**. Full details: [privacy policy](https://kamdoo.app/privacy.html).
+One branch per Odoo version. Take the branch of your version: each one only holds what that version needs.
+
+| Odoo version | Branch | Status |
+| --- | --- | --- |
+| 14 | `14.0` | Supported · this branch |
+| 15 | `15.0` | Supported |
+| 16 | `16.0` | Supported |
+| 17 | `17.0` | Supported |
+| 18 | `18.0` | Supported |
+| 19 | `19.0` | Supported |
+| 20 | `20.0` | Supported |
+
+## Privacy and security
+
+- Kamdoo Mobile talks directly to your Odoo: Kamka IT receives none of your data.
+- The QR code holds a one-time token valid for five minutes, never a login or a password.
+- Notifications are the only exception: your Odoo encrypts each one for the phone it is meant for, then sends it through the Kamdoo relay to Apple or Google. The relay cannot read them and keeps none of them. Its code is public: [kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais).
+- Report a vulnerability privately through GitHub: the **Security** tab, then **Report a vulnerability**. Never in a public issue.
 
 ## Tests
 
-```
+```bash
 odoo -d <database> -i kamdoo_connect --test-enable --stop-after-init
 ```
 
-## License
+## Contributing
 
-[LGPL-3](LICENSE). Published by [Kamka IT](https://kamka-it.com) · contact@kamka-it.com
+Open an issue first, then a pull request against the branch of the Odoo version concerned (`14.0` here).
+
+## Learn more
+
+| Document | Where |
+| --- | --- |
+| Kamdoo | [kamdoo.app](https://kamdoo.app) |
+| Privacy policy of Kamdoo Mobile | [kamdoo.app/privacy.html](https://kamdoo.app/privacy.html) |
+| The notification relay | [kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais) |
+| Licence | [LGPL-3](LICENSE) |
 
 ---
 
-## Français
-
-Module Odoo gratuit et libre pour **[Kamdoo](https://kamdoo.app)**, l'app native qui ouvre l'Odoo de votre société sur iPhone, iPad et Android.
-
-Kamdoo fonctionne sans lui : on se connecte avec ses identifiants Odoo habituels. Installé sur votre base, ce module ajoute le jumelage par QR code, l'identité de votre société dans l'app et, sur Odoo 14 à 16, les notifications.
-
-### Ce qu'il ajoute
-
-- **« Connecter mon téléphone »** dans le menu de l'utilisateur : un QR code que l'app scanne. Il contient un jeton à usage unique, valable cinq minutes, jamais un identifiant ni un mot de passe.
-- **Votre société dans l'app** : son nom, son logo et sa couleur, lus par l'app avant la connexion sur `/kamdoo/info`. Cette route publique renvoie les versions d'Odoo et du module, le nom de la base, et le nom, la couleur et le logo de la société : ce que montre déjà la page de connexion publique, rien de plus.
-- **Des écrans adaptés au toucher** quand une page d'Odoo est ouverte depuis l'app.
-- **Odoo 14, 15 et 16 : les notifications sur le téléphone** pour les messages privés, les mentions et la boîte de réception, chiffrées de bout en bout. Ces versions n'ont pas de Web Push : le module l'ajoute comme le fait Odoo 17 (chiffrement RFC 8291, signature VAPID RFC 8292). Si le paquet `cryptography` manque, comme dans l'image officielle d'Odoo 14, une version en Python pur des mêmes algorithmes prend le relais.
-- **Odoo 19 et 20 : une clé par téléphone.** L'app parle à l'API JSON-2 avec une clé d'API à elle, plutôt qu'avec une session de navigateur. La clé porte le nom du téléphone (« Kamdoo · iPhone de Karim »), expire après la durée choisie dans les Paramètres (30 jours par défaut), est renouvelée par l'app avant l'échéance, et se révoque comme toute clé d'API dans Préférences › Sécurité du compte.
-
-### Une branche par version d'Odoo
-
-| Branche | Odoo | Notifications | Clé d'API du téléphone |
-|---|---|---|---|
-| `14.0`, `15.0`, `16.0` | 14 à 16 | ajoutées par ce module | non |
-| `17.0`, `18.0` | 17 et 18 | natives dans Odoo | non |
-| `19.0`, `20.0` | 19 et 20 | natives dans Odoo | oui |
-
-### Installation
-
-1. Prenez la branche de votre version d'Odoo et copiez le dossier `kamdoo_connect` dans votre chemin d'addons.
-2. Mettez à jour la liste des Applications, puis installez **Kamdoo Mobile Connector**.
-3. Dans l'app, chacun ouvre le menu de l'utilisateur › **Connecter mon téléphone** et scanne le QR code.
-
-Odoo 14 à 16 ont besoin du paquet Python `requests`, présent dans les images officielles.
-
-### Confidentialité
-
-L'app parle directement à votre Odoo : Kamka IT ne reçoit aucune de vos données. Seule exception, les notifications : votre Odoo chiffre chacune pour le téléphone à qui elle est destinée, puis l'envoie par le relais de Kamdoo à Apple ou Google. Le relais ne peut pas les lire et n'en garde rien. Son code est public : **[kamka-ai/kamdoo-relais](https://github.com/kamka-ai/kamdoo-relais)**. Tout le détail : [politique de confidentialité](https://kamdoo.app/confidentialite.html).
-
-### Licence
-
-[LGPL-3](LICENSE). Édité par [Kamka IT](https://kamka-it.com) · contact@kamka-it.com
+<sub>Kamdoo, by Kamka IT · compatible with Odoo, not affiliated with Odoo S.A. · LGPL-3</sub>
